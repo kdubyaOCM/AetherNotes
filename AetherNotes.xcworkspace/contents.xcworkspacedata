@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "self:AetherNotes.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/AetherNotesCore">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/AetherNotesUI">
+   </FileRef>
+</Workspace>
