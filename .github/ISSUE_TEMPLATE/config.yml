@@ -1,0 +1,9 @@
+---
+blank_issues_enabled: false
+contact_links:
+  - name: Project State (Current Phase)
+    url: https://github.com/kdubyaOCM/AetherNotes/blob/Main/Docs/STATE.md
+    about: Read this before filing issues. Shows current phase and next actions.
+  - name: Architecture Decisions (ADRs)
+    url: https://github.com/kdubyaOCM/AetherNotes/tree/Main/Docs/ADR
+    about: Review existing decisions before proposing major changes.
