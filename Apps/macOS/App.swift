@@ -1,16 +1,22 @@
 import SwiftUI
+import AetherNotesUseCases
+import AetherNotesUIShared
 
 @main
 struct AetherNotesMacOSApp: App {
+    private let environment = AppEnvironment.makeDefault()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationSplitView {
+                Text("Sidebar")
+                    .frame(minWidth: 200)
+            } detail: {
+                NotesListView(environment: environment)
+            }
         }
-    }
-}
-
-struct ContentView: View {
-    var body: some View {
-        Text("AetherNotes – macOS")
+        .commands {
+            CommandGroup(after: .newItem) {}
+        }
     }
 }
