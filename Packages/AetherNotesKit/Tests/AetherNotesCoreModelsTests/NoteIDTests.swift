@@ -43,8 +43,9 @@ final class NoteIDTests: XCTestCase {
 
     func testNoteEquality() {
         let id = NoteID.make()
-        let noteA = Note(id: id, title: "Hello")
-        let noteB = Note(id: id, title: "Hello")
+        let timestamp = Date(timeIntervalSince1970: 1_234_567)
+        let noteA = Note(id: id, title: "Hello", createdAt: timestamp, updatedAt: timestamp)
+        let noteB = Note(id: id, title: "Hello", createdAt: timestamp, updatedAt: timestamp)
         XCTAssertEqual(noteA, noteB)
     }
 
