@@ -1,0 +1,17 @@
+---
+name: Tech Debt
+description: Template for reporting technical debt issues.
+labels: ["tech debt"]
+---
+
+## Description
+
+<!-- Provide a brief description of the technical debt. -->
+
+## Impact
+
+<!-- Explain the impact of the technical debt on the project. -->
+
+## Proposed Solution
+
+<!-- Suggest a solution or a strategy to address the technical debt. -->
