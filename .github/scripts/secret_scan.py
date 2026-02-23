@@ -125,6 +125,7 @@ def tracked_files(repo_root: Path) -> list[str]:
         ["git", "ls-files"],
         capture_output=True,
         text=True,
+        check=True,
         cwd=repo_root,
     )
     return [f for f in result.stdout.splitlines() if f]
@@ -191,21 +192,21 @@ def print_findings(findings: list[Finding]) -> None:
 def run_selftest() -> int:
     """Run in-memory self-tests against sample strings."""
     samples: list[tuple[str, str, bool]] = [
-        ("OpenAI-style key", "sk-abc123def456ghi789jkl012mno345pqr678", True),
-        ("Anthropic-style key", "sk-ant-abcdef1234567890ABCDEFGH", True),
-        (
+        ("OpenAI-style key", "sk-abc123def456ghi789jkl012mno345pqr678", True),  # secretscan:ignore
+        ("Anthropic-style key", "sk-ant-abcdef1234567890ABCDEFGH", True),  # secretscan:ignore
+        (  # secretscan:ignore
             "Generic API key assignment",
-            'API_KEY = "supersecretvalue123"',
+            'API_KEY = "supersecretvalue123"',  # secretscan:ignore
             True,
         ),
         (
             "Generic API key assignment",
-            "TOKEN = 'mytoken1234567890'",
+            "TOKEN = 'mytoken1234567890'",  # secretscan:ignore
             True,
         ),
-        ("PEM private key header", "-----BEGIN RSA KEY-----", True),
-        ("PEM private key header", "-----BEGIN PRIVATE KEY-----", True),
-        ("AWS access key ID", "AKIAIOSFODNN7EXAMPLE", True),
+        ("PEM private key header", "-----BEGIN RSA KEY-----", True),  # secretscan:ignore
+        ("PEM private key header", "-----BEGIN PRIVATE KEY-----", True),  # secretscan:ignore
+        ("AWS access key ID", "AKIAIOSFODNN7EXAMPLE", True),  # secretscan:ignore
         # Negative cases
         ("OpenAI-style key", "sk-short", False),
         ("AWS access key ID", "AKIA1234", False),
@@ -245,7 +246,7 @@ def run_selftest() -> int:
         failed += 1
 
     # Test redaction
-    redacted = redact("sk-abc123def456ghi789jkl012")
+    redacted = redact("sk-abc123def456ghi789jkl012")  # secretscan:ignore
     if redacted.startswith("sk-a") and redacted.endswith("l012") and "***" in redacted:
         print("  [PASS] Redaction works correctly")
         passed += 1
@@ -275,13 +276,13 @@ def main() -> int:
     if args.mode == "selftest":
         return run_selftest()
 
-    repo_root = Path(
-        subprocess.run(
-            ["git", "rev-parse", "--show-toplevel"],
-            capture_output=True,
-            text=True,
-        ).stdout.strip()
+    result = subprocess.run(
+        ["git", "rev-parse", "--show-toplevel"],
+        capture_output=True,
+        text=True,
+        check=True,
     )
+    repo_root = Path(result.stdout.strip())
 
     findings = scan_repo(repo_root)
 

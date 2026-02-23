@@ -25,8 +25,8 @@ A GitHub Actions workflow (`.github/workflows/secret-scan.yml`) runs on every pu
 | OpenAI-style key | `sk-abc123…` | `\bsk-[A-Za-z0-9]{20,}\b` |
 | Anthropic-style key | `sk-ant-abc123…` | `\bsk-ant-[A-Za-z0-9_-]{20,}\b` |
 | Generic API key assignment | `API_KEY = "…"` | `(API_KEY\|APIKEY\|SECRET\|TOKEN)\s*=\s*['"][^'"]{12,}['"]` |
-| PEM private key header | `-----BEGIN RSA KEY-----` | `-----BEGIN (RSA\|EC\|OPENSSH\|PRIVATE) KEY-----` |
-| AWS access key ID | `AKIAIOSFODNN7EXAMPLE` | `\bAKIA[0-9A-Z]{16}\b` |
+| PEM private key header | `-----BEGIN RSA KEY-----` | `-----BEGIN (RSA\|EC\|OPENSSH\|PRIVATE) KEY-----` | <!-- secretscan:ignore -->
+| AWS access key ID | `AKIAIOSFODNN7EXAMPLE` | `\bAKIA[0-9A-Z]{16}\b` | <!-- secretscan:ignore -->
 
 ### How it works
 
@@ -51,7 +51,7 @@ Create or edit `.github/scripts/secret_scan_allowlist.txt`. Each non-empty, non-
 
 ```text
 # Allow the AWS example key used in documentation
-AKIAIOSFODNN7EXAMPLE
+AKIAIOSFODNN7EXAMPLE  # secretscan:ignore
 ```
 
 Lines starting with `#` are comments and are ignored.
