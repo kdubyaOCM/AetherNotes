@@ -7,4 +7,10 @@
    <FileRef
       location = "group:Packages/AetherNotesKit">
    </FileRef>
+   <FileRef
+      location = "group:Packages/AetherSyncQueue">
+   </FileRef>
+   <FileRef
+      location = "group:Packages/SecureStorage">
+   </FileRef>
 </Workspace>
