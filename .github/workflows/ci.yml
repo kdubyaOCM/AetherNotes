@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Swift packages
+        run: |
+          found_packages=false
+          for pkg_dir in $(find . -name "Package.swift" -not -path "./.build/*" | xargs -I{} dirname {}); do
+            echo "Running swift test in $pkg_dir"
+            swift test --package-path "$pkg_dir"
+            found_packages=true
+          done
+          if [ "$found_packages" = false ]; then
+            echo "No Swift packages yet"
+          fi
+
+      - name: Xcode project detection
+        run: |
+          if find . -maxdepth 2 \( -name "*.xcodeproj" -o -name "*.xcworkspace" \) | grep -q .; then
+            echo "Xcode project detected"
+          else
+            echo "No Xcode project yet"
+          fi
