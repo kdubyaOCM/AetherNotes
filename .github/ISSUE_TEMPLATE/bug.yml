@@ -1,27 +1,92 @@
-name: Bug report
-about: Create a report to help us improve
-title: "[Bug]: {{ title }}"
-labels: [bug]
-assignees: []
----
+name: "Bug"
+description: "Report a defect with repro steps and expected vs actual behavior."
+title: "Bug: <short description>"
+labels: ["bug"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: "One paragraph. What is broken."
+    validations:
+      required: true
 
-<!-- Please describe the bug you're experiencing and the steps to reproduce it -->
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '...'
-3. Scroll down to '...'
-4. See error
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - "S0: Crash / Data loss / Security"
+        - "S1: Major feature broken"
+        - "S2: Degraded behavior"
+        - "S3: Minor / cosmetic"
+    validations:
+      required: true
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - "iOS"
+        - "iPadOS"
+        - "macOS"
+        - "watchOS"
+        - "Widgets/Live Activity"
+        - "Cross-platform (Core Packages)"
+    validations:
+      required: true
 
-**Additional context**
-Add any other context about the problem here.
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: "OS version, device model, build/branch/commit, iCloud status."
+      placeholder: |
+        - Device:
+        - OS:
+        - Branch/Commit:
+        - iCloud signed in (Y/N):
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / screenshots
+      description: "Attach files if possible. Redact secrets."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: regression
+    attributes:
+      label: Regression
+      options:
+        - label: "This worked in a previous build"
+        - label: "This is new behavior / unknown"
