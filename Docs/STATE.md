@@ -1,8 +1,9 @@
 # AetherNotes. Project State
 
 ## Current phase
-- Phase: 00 (Bootstrap)
-- Branch: bootstrap/claude-contract-and-skeleton
+- Phase: 00 (Bootstrap) — complete
+- Last merged branch: bootstrap/claude-contract-and-skeleton
+- Last phase handoff: Docs/Handoff/Phase00.md
 
 ## Stack constraints
 - Swift 6, SwiftUI, SwiftData
@@ -11,7 +12,14 @@
 - Secure Enclave + Keychain for LLM API key cryptography
 
 ## Minimum OS versions
-TBD. Define minimum versions before Phase 1 implementation and keep them consistent across all targets.
+These versions are applied in all Package.swift targets and must be kept in sync with any Xcode project target settings.
+
+| Platform | Minimum version |
+|----------|----------------|
+| iOS      | 17.0           |
+| iPadOS   | 17.0           |
+| macOS    | 14.0 (Sonoma)  |
+| watchOS  | 10.0           |
 
 ## Repository invariants
 - Apps/ are thin shells only
@@ -19,6 +27,10 @@ TBD. Define minimum versions before Phase 1 implementation and keep them consist
 - No plaintext secrets in repo or logs
 - No unbounded memory growth during recording or transcription
 
+## Known gaps (to resolve in Phase 01)
+- Widgets extension target is listed in CLAUDE.md but not yet created in the Xcode project.
+
 ## Next actions
-- Land Phase 00 scaffolding PR
-- Create Phase 01 issue and branch plan
+- Create Phase 01 issue and branch (e.g., phase-01-data-arch)
+- Add Widgets extension target to the Xcode project
+- First ADR: CloudKit sync strategy (CKSyncEngine vs. NSPersistentCloudKitContainer)

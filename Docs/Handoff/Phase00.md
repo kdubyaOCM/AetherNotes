@@ -2,7 +2,7 @@
 
 ## Base and end commits
 - Base: b797186 (Merge pull request #1 from kdubyaOCM/copilot/generate-xcode-workspace-app-targets)
-- End: TBD (set to HEAD of bootstrap/claude-contract-and-skeleton after merge)
+- End: 5ee3345c0410de16e8059dc9060f2900e8d49305 (Merge PR #7 – issue template config, final Phase 00 commit)
 
 ## Scope delivered
 - Added CLAUDE.md: project contract with hard constraints, layout rules, phase workflow, coding rules, git hygiene
