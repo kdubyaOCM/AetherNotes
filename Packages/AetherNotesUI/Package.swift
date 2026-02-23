@@ -1,4 +1,4 @@
-// swift-tools-version: 5.9
+// swift-tools-version: 6.0
 import PackageDescription
 
 let package = Package(
@@ -21,12 +21,18 @@ let package = Package(
         .target(
             name: "AetherNotesUI",
             dependencies: ["AetherNotesCore"],
-            path: "Sources/AetherNotesUI"
+            path: "Sources/AetherNotesUI",
+            swiftSettings: [
+                .swiftLanguageMode(.v6),
+            ]
         ),
         .testTarget(
             name: "AetherNotesUITests",
             dependencies: ["AetherNotesUI"],
-            path: "Tests/AetherNotesUITests"
+            path: "Tests/AetherNotesUITests",
+            swiftSettings: [
+                .swiftLanguageMode(.v6),
+            ]
         ),
     ]
 )
