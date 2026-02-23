@@ -1,36 +1,33 @@
-# AetherNotes. Project State
+# AetherNotes – Project State
 
-## Current phase
-- Phase: 00 (Bootstrap) — complete
-- Last merged branch: bootstrap/claude-contract-and-skeleton
-- Last phase handoff: Docs/Handoff/Phase00.md
+## Minimum OS Versions
+- iOS / iPadOS: 17.0
+- macOS: 14.0
+- watchOS: 10.0
 
-## Stack constraints
-- Swift 6, SwiftUI, SwiftData
-- CloudKit for sync (CKSyncEngine planned)
-- WhisperKit for on-device transcription
-- Secure Enclave + Keychain for LLM API key cryptography
+## Current Phase
+Phase 0 – Foundation & Security Infrastructure
 
-## Minimum OS versions
-These versions are applied in all Package.swift targets and must be kept in sync with any Xcode project target settings.
+## Completed Work
 
-| Platform | Minimum version |
-|----------|----------------|
-| iOS      | 17.0           |
-| iPadOS   | 17.0           |
-| macOS    | 14.0 (Sonoma)  |
-| watchOS  | 10.0           |
+### Phase 0
+- [x] Repository structure created (Apps/, Packages/, Docs/, Tools/)
+- [x] Phase workflow and gating documented (CLAUDE.md)
+- [x] Security policy documented (Docs/Security/Secrets.md)
+- [x] **SecureStorage package** (`Packages/SecureStorage/`)
+  - Secure Enclave P-256 key generation with software fallback
+  - ECDH + HKDF key derivation for AES-256-GCM encryption
+  - Keychain-backed encrypted secret storage (`.whenUnlockedThisDeviceOnly`)
+  - Key rotation support
+  - EncryptedBlob format v1 with versioning for forward compatibility
+  - ADR-0002 accepted
 
-## Repository invariants
-- Apps/ are thin shells only
-- Shared logic lives in Packages/
-- No plaintext secrets in repo or logs
-- No unbounded memory growth during recording or transcription
+## Packages
+| Package | Path | Purpose |
+|---------|------|---------|
+| SecureStorage | `Packages/SecureStorage/` | Secure Enclave + Keychain encrypted secret storage |
 
-## Known gaps (to resolve in Phase 01)
-- Widgets extension target is listed in CLAUDE.md but not yet created in the Xcode project.
-
-## Next actions
-- Create Phase 01 issue and branch (e.g., phase-01-data-arch)
-- Add Widgets extension target to the Xcode project
-- First ADR: CloudKit sync strategy (CKSyncEngine vs. NSPersistentCloudKitContainer)
+## ADRs
+| ID | Title | Status |
+|----|-------|--------|
+| ADR-0002 | Secure Enclave Key Storage | Accepted |
