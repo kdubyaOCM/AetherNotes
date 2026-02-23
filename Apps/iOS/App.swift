@@ -1,16 +1,14 @@
 import SwiftUI
+import AetherNotesUseCases
+import AetherNotesUIShared
 
 @main
 struct AetherNotesIOSApp: App {
+    private let environment = AppEnvironment.makeDefault()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NotesListView(environment: environment)
         }
-    }
-}
-
-struct ContentView: View {
-    var body: some View {
-        Text("AetherNotes – iOS")
     }
 }

@@ -5,10 +5,7 @@
       location = "self:AetherNotes.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Packages/AetherNotesCore">
-   </FileRef>
-   <FileRef
-      location = "group:Packages/AetherNotesUI">
+      location = "group:Packages/AetherNotesKit">
    </FileRef>
    <FileRef
       location = "group:Packages/AetherSyncQueue">
