@@ -1,0 +1,15 @@
+# Default owner
+* @kdubyaOCM
+
+# Require explicit review for project contract and state
+/CLAUDE.md @kdubyaOCM
+/Docs/STATE.md @kdubyaOCM
+/Docs/Handoff/ @kdubyaOCM
+/Docs/ADR/ @kdubyaOCM
+
+# Core shared logic
+/Packages/ @kdubyaOCM
+
+# CI and automation
+/.github/workflows/ @kdubyaOCM
+/.github/ISSUE_TEMPLATE/ @kdubyaOCM
