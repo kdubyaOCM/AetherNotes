@@ -1,17 +1,62 @@
----
-name: Tech Debt
-description: Template for reporting technical debt issues.
-labels: ["tech debt"]
----
+name: "Tech debt"
+description: "Track refactors, cleanup, and architecture improvements."
+title: "TechDebt: <short title>"
+labels: ["tech-debt"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: "What is the debt and where does it live."
+    validations:
+      required: true
 
-## Description
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: "Why it matters. Risk, maintenance cost, performance, correctness."
+    validations:
+      required: true
 
-<!-- Provide a brief description of the technical debt. -->
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - "P0: Must fix before beta"
+        - "P1: Should fix soon"
+        - "P2: Nice to have"
+        - "P3: Park it"
+    validations:
+      required: true
 
-## Impact
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed solution
+      placeholder: |
+        - Option A:
+        - Option B:
+        - Recommendation:
+    validations:
+      required: true
 
-<!-- Explain the impact of the technical debt on the project. -->
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      placeholder: |
+        - Builds all targets
+        - Adds/updates tests
+        - No public API break (or documented migration)
+    validations:
+      required: false
 
-## Proposed Solution
-
-<!-- Suggest a solution or a strategy to address the technical debt. -->
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: "Links to PRs, commits, ADRs, files."
+    validations:
+      required: false
