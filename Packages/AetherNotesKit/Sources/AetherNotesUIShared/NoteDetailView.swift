@@ -25,6 +25,8 @@ public struct NoteDetailView: View {
         }
         .padding()
         .navigationTitle(note.title)
+        #if !os(macOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
