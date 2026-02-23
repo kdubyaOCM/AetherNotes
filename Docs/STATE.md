@@ -27,10 +27,26 @@ These versions are applied in all Package.swift targets and must be kept in sync
 - No plaintext secrets in repo or logs
 - No unbounded memory growth during recording or transcription
 
-## Known gaps (to resolve in Phase 01)
-- Widgets extension target is listed in CLAUDE.md but not yet created in the Xcode project.
+## Current phase
+- Phase: 01 (Foundation) — in progress
+- Branch: phase-01/foundation-workspace-packages
+- Last phase handoff: Docs/Handoff/Phase01.md
+
+## Package structure
+- Single package: `Packages/AetherNotesKit`
+- Targets: AetherNotesCoreModels, AetherNotesRepositories, AetherNotesUseCases, AetherNotesSecurity, AetherNotesSync, AetherNotesAudio, AetherNotesTranscription, AetherNotesUIShared
+- See Docs/ADR/ADR-0001-swift-package-multi-target.md for rationale
 
 ## Next actions
-- Create Phase 01 issue and branch (e.g., phase-01-data-arch)
-- Add Widgets extension target to the Xcode project
-- First ADR: CloudKit sync strategy (CKSyncEngine vs. NSPersistentCloudKitContainer)
+
+### Phase 02 — Data Architecture and Sync
+- Replace InMemoryNoteRepository with SwiftData-backed implementation
+- Implement SecretsStore with Secure Enclave + Keychain
+- Begin CKSyncEngine wrapper (state persistence, retry, chunking)
+- Upgrade to swift-tools-version 6.0 and resolve strict concurrency errors
+- Write ADR-0002: SwiftData schema and CloudKit record mapping
+
+### Phase 03 — Audio and ML Pipeline
+- Implement AVFoundation audio capture with file streaming and ring buffer
+- Integrate WhisperKit for on-device transcription
+- Enable recording flow end-to-end in use cases and shared UI
